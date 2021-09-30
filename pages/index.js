@@ -1,15 +1,12 @@
-import Button from 'react-bootstrap/Button'
-import { useAuthState } from 'react-firebase-hooks/auth'
-import firebase from '../firebase/initFirebase'
+import useAuth from '../hooks/useAuth'
 
 const HomePage = () => {
-    const [user, loading, error] = useAuthState(firebase.auth())
+    const { user, loading, error } = useAuth()
 
+    console.log(user)
     return (
         <div>
-            <h1 className="display-4 text-center">Hello {user?.email}</h1>
-
-            <Button onClick={() => firebase.auth().signOut()}>Logout</Button>
+            <h1 className="display-4 text-center">Hello {user?.displayName}</h1>
         </div>
     )
 }

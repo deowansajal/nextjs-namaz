@@ -11,21 +11,21 @@ const firebaseConfig = {
     appId: process.env.NEXT_PUBLIC_FIREBASE_APP_ID,
 }
 
-// Initialize Firebase
-
-if (!firebase.apps.length) {
-    firebase.initializeApp(firebaseConfig)
-}
-
 export const uiConfig = {
     signInFlow: 'popup',
     signInSuccessUrl: '/',
     signInOptions: [
-        firebase.auth.EmailAuthProvider.EMAIL_PASSWORD_SIGN_IN_METHOD,
-        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
+        firebase.auth.EmailAuthProvider.PROVIDER_ID,
         firebase.auth.GoogleAuthProvider.PROVIDER_ID,
+        firebase.auth.FacebookAuthProvider.PROVIDER_ID,
         firebase.auth.TwitterAuthProvider.PROVIDER_ID,
     ],
+}
+
+// Initialize Firebase
+
+if (!firebase.apps.length) {
+    firebase.initializeApp(firebaseConfig)
 }
 
 export default firebase

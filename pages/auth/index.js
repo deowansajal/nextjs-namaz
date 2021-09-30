@@ -1,28 +1,14 @@
-import { useRouter } from 'next/router'
+import { Container } from 'react-bootstrap'
 
-import { useAuthState } from 'react-firebase-hooks/auth'
-
-import firebase from '../../firebase/initFirebase'
 import SignIn from '../../components/auth/SignIn'
+import publicPage from '../../utils/publicPage'
 
-const Auth = () => {
-    const router = useRouter()
-    const [user, loading, error] = useAuthState(firebase.auth())
-
-    if (loading) {
-        return <div>Loading...</div>
-    }
-
-    if (user) {
-        router.replace('/')
-        return null
-    }
-
+const AuthPage = () => {
     return (
-        <>
+        <Container>
             <SignIn />
-        </>
+        </Container>
     )
 }
 
-export default Auth
+export default publicPage(AuthPage)

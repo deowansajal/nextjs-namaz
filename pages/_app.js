@@ -1,8 +1,19 @@
+import Layout from '../components/layouts/Layout'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import '../styles/globals.css'
+import '../styles/firebaseui-styling.global.css'
+import 'react-toastify/dist/ReactToastify.css'
+import { ToastContainer } from 'react-toastify'
 
-function MyApp({ Component, pageProps }) {
-    return <Component {...pageProps} />
+const App = ({ Component, pageProps }) => {
+    return (
+        <>
+            <Layout>
+                <Component {...pageProps} />
+            </Layout>
+            <ToastContainer position="bottom-center" />
+        </>
+    )
 }
 
-export default MyApp
+export default App
